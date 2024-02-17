@@ -5,7 +5,7 @@
 ## Write up
 
 * [📕 Tryhackme](write-up/tryhackme/README.md)
-  * [Page 1](write-up/tryhackme/)
+  * [red](write-up/tryhackme/red/2023-11-13-Red.md)
 * [📕 Hackthebox](write-up/hackthebox/README.md)
   * [Page 2](write-up/hackthebox/)
 
