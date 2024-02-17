@@ -5,9 +5,9 @@
 ## Write up
 
 * [📕 Tryhackme](write-up/tryhackme/README.md)
-  * [Page 1](write-up/tryhackme/page-1.md)
+  * [Page 1](write-up/tryhackme/)
 * [📕 Hackthebox](write-up/hackthebox/README.md)
-  * [Page 2](write-up/hackthebox/page-2.md)
+  * [Page 2](write-up/hackthebox/)
 
 ## Articulos
 
