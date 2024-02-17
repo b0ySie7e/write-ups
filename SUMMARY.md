@@ -47,7 +47,7 @@
 * [🛠 PROYECTOS](articulos/Proyectos/README.md)
   * [📝 HOST PORT DISCOVERY](articulos/Proyectos/hostPortDiscovery/2023-03-13-HostPortDiscovery.md)
 
-* [🛠 LABORATORIO](articulos/Proyectos/README.md)
+* [🛠 LABORATORIO](articulos/Laboratorio/README.md)
   * [📝 HACKING WIRELES](articulos/Laboratorio/hackingWireless/2022-02-19-HACKING-WIRELESS.md)
 
 ## Vulnerabilidaes
