@@ -5,6 +5,11 @@
 ## Write up
 
 * [📕 Tryhackme](write-up/tryhackme/README.md)
+  * [EAVESDROPPER](write-up/tryhackme/36.Eavesdropper/2024-02-16-Eavesdropper.md)
+  * [KITTY](write-up/tryhackme/35.kitty/2024-02-10-kitty.md)
+  * [BORDERLANS](write-up/tryhackme/34.Borderlands/2024-02-02-Borderlans.md)
+  * [WILLOW](write-up/tryhackme/33.Willow/2024-01-25-Wollow.md)
+  * [GATEKEEPER](write-up/tryhackme/32.Gatekeeper/2024-01-15-Gatekeeper.md)
   * [WEB STRIKE BLUE TEAM](write-up/tryhackme/31.WebStrikeBlueTeamLab/2024-01-11-WebStrikeBlueTeamLab.md)
   * [SPLUNKPS ECLIPSE](write-up/tryhackme/30.splunkPsEclipsev2/2024-01-07-splunkPsEclipse.md)
   * [SUSTAH](write-up/tryhackme/29.sustah/2024-01-03-Sustah.md)
