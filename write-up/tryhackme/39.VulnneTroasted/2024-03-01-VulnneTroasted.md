@@ -233,6 +233,7 @@ Nos encontraremos con que el usuario del cual contamos las credenciales tiene pe
 ![20240301090153.png](20240301090153.png)
 
 Otra manera de enumerar o observar esto es con `net user a-whitehat`
+
 ![20240301091038.png](20240301091038.png)
 
 ### Secretsdump
