@@ -46,10 +46,14 @@
   * [Mustacchio](write-up/tryhackme/1.Mustacchio/2021-09-04-thm-Mustacchio.md)
 
 * [📕 Hackthebox](write-up/hackthebox/README.md)
-  * [Cap](write-up/hackthebox/cap/2021-10-02-HTB-CAP.md)
-  * [Doctor](write-up/hackthebox/doctor/2022-09-15-Doctor.md)
-  * [Validation](write-up/hackthebox/validation/2023-02-03-Validation.md)
-  * [Twomillion](write-up/hackthebox/twomillion/2023-10-10-TwoMillion.md)
+  * [Authority](write-up/hackthebox/8.Authority/2024-03-09-Authority.md)
+  * [Return](write-up/hackthebox/7.Return/2024-03-06-Return.md)
+  * [Timelapse](write-up/hackthebox/6.Timelapse/2024-03-05-Timelapse.md)
+  * [Support](write-up/hackthebox/5.Support/2024-03-04-Support.md)
+  * [Cap](write-up/hackthebox/4.cap/2021-10-02-HTB-CAP.md)
+  * [Doctor](write-up/hackthebox/3.doctor/2022-09-15-Doctor.md)
+  * [Validation](write-up/hackthebox/2.validation/2023-02-03-Validation.md)
+  * [Twomillion](write-up/hackthebox/1.twomillion/2023-10-10-TwoMillion.md)
 ## Articulos
 
 * [🛠 Proyectos](articulos/Proyectos/README.md)

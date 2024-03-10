@@ -199,7 +199,7 @@ El archivo el que contiene credenciales es `ResetPassword.vbs`
 Teniendo estas credenciales podremos seguir enumerando:
 
 ```php
-strUserNTName = "a-whitehat"
+strUserNTName = "a-whitehat"whitehat
 strPassword = "bNdKVkjv3RR9ht"
 ```
 
