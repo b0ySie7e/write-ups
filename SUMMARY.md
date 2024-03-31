@@ -46,6 +46,12 @@
   * [Mustacchio](write-up/tryhackme/1.Mustacchio/2021-09-04-thm-Mustacchio.md)
 
 * [📕 Hackthebox](write-up/hackthebox/README.md)
+  * [Resolute](write-up/hackthebox/14.Resolute/2024-03-28-Resolute.md)
+  * [Monteverde](write-up/hackthebox/13.Monteverde/2024-03-26-Monteverde.md)
+  * [Intellegence](write-up/hackthebox/12.Intellegence/2024-03-24-Intellegence.md)
+  * [StreamIO](write-up/hackthebox/11.StreamIO/2024-03-20-StreamIO.md)
+  * [Scrambled](write-up/hackthebox/10.Scrambled/2024-03-15-Scrambled.md)
+  * [Escape](write-up/hackthebox/9.Escape/2024-03-11-Escape.md)
   * [Authority](write-up/hackthebox/8.Authority/2024-03-09-Authority.md)
   * [Return](write-up/hackthebox/7.Return/2024-03-06-Return.md)
   * [Timelapse](write-up/hackthebox/6.Timelapse/2024-03-05-Timelapse.md)
