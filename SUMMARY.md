@@ -48,7 +48,7 @@
 * [📕 Hackthebox](write-up/hackthebox/README.md)
   * [Resolute](write-up/hackthebox/14.Resolute/2024-03-28-Resolute.md)
   * [Monteverde](write-up/hackthebox/13.Monteverde/2024-03-26-Monteverde.md)
-  * [Intellegence](write-up/hackthebox/12.Intellegence/2024-03-24-Intellegence.md)
+  * [Intelligence](write-up/hackthebox/12.Intelligence/2024-03-24-Intelligence.md)
   * [StreamIO](write-up/hackthebox/11.StreamIO/2024-03-20-StreamIO.md)
   * [Scrambled](write-up/hackthebox/10.Scrambled/2024-03-15-Scrambled.md)
   * [Escape](write-up/hackthebox/9.Escape/2024-03-11-Escape.md)

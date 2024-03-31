@@ -1,5 +1,5 @@
 ---
-title: Intellegence - Hackthebox
+title: Intelligence - Hackthebox
 date: 2024-03-24
 categories: [Write up, Windows, Hackthebox]
 tags: [ldap, smb, exiftool, kerbrute, dnstool,ReadGMSAPassword, AllowedToDelegate, active directory]     # TAG names should always be lowercase
