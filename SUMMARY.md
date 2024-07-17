@@ -46,6 +46,7 @@
   * [Mustacchio](write-up/tryhackme/1.Mustacchio/2021-09-04-thm-Mustacchio.md)
 
 * [📕 Hackthebox](write-up/hackthebox/README.md)
+  * [Pov](write-up/hackthebox/15.Pov/2024-07-17-Pov.md)
   * [Resolute](write-up/hackthebox/14.Resolute/2024-03-28-Resolute.md)
   * [Monteverde](write-up/hackthebox/13.Monteverde/2024-03-26-Monteverde.md)
   * [Intelligence](write-up/hackthebox/12.Intelligence/2024-03-24-Intelligence.md)
