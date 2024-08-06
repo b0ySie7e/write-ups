@@ -85,7 +85,7 @@
     * [Lab: SQL injection UNION attack, determining the number of columns returned by the query](write-up/PortSwigger/1.SQL_Injection/6.Lab_SQL_injection_UNION_attack_determining_the_number_of_columns_returned_by_the_query/Lab_SQL_injection_UNION_attack_determining_the_number_of_columns_returned_by_the_query.md)
     * [Lab: SQL injection UNION attack, retrieving data from other tables](write-up/PortSwigger/1.SQL_Injection/7.Lab_SQL_injection_UNION_attack_retrieving_data_from_other_tables/Lab_SQL_injection_UNION_attack_retrieving_data_from_other_tables.md)
     * [Lab: SQL injection UNION attack, retrieving multiple values in a single column](write-up/PortSwigger/1.SQL_Injection/8.Lab_SQL_injection_UNION_attack_retrieving_multiple_values_in_a_single_column/Lab_SQL_injection_UNION_attack_retrieving_multiple_values_in_a_single_column.md)
-    * [Lab: Blind SQL injection with conditional responses](write-up/PortSwigger/1.SQL_Injection/9.Lab_Blind_SQL_injection_with_conditional_responses/)
+    * [Lab: Blind SQL injection with conditional responses](write-up/PortSwigger/1.SQL_Injection/9.Lab_Blind_SQL_injection_with_conditional_responses/Lab_Blind_SQL_injection_with_conditional_responses.md)
     * [Lab: Blind SQL injection with conditional errors](write-up/PortSwigger/1.SQL_Injection/10.Lab_Blind_SQL_injection_with_conditional_errors/Blind_SQL_injection_with_conditional_errors.md)
     * [Lab: Visible error-based SQL injection](write-up/PortSwigger/1.SQL_Injection/11.Lab_Visible_error-based_SQL_injection/Visible_error-based_SQL_injection.md)
     * [Lab: Blind SQL injection with time delays](write-up/PortSwigger/1.SQL_Injection/12.Lab_Blind_SQL_injection_with_time_delays/Blind_SQL_injection_with_time_delays.md)
