@@ -97,6 +97,34 @@
     * [Lab: Blind SQL injection with out-of-band data exfiltration](write-up/PortSwigger/1.SQL_Injection/15.Lab_Blind_SQL_injection_with_out-of-band_data_exfiltration/Blind_SQL_injection_with_out-of-band_data_exfiltration.md)
     * [Lab: SQL injection with filter bypass via XML encoding](write-up/PortSwigger/1.SQL_Injection/16.Lab_SQL_injection_with_filter_bypass_via_XML_encoding/SQL_injection_with_filter_bypass_via_XML_encoding.md)
 
+## Notas
+
+* [Pentesting](/notas/1.pentesting/README.md)
+  * [Comandos-Linux](/notas//1.pentesting/1.1.comandos/comandos-linux.md)
+  * [Comandos-Windows](/notas/1.pentesting/1.1.comandos/comandos-windows.md)
+  * [Enumeración de Hosts](/notas/1.pentesting/1.2.enumeracion-de-hosts/Enumeración-de-Hosts.md)
+  * [Enumeración de Puertos](/notas/1.pentesting/1.3.enumeracion-de-puertos/Enumeración-de-Puertos.md)
+  * [FootPrinting](/notas/1.pentesting/1.4.footprinting/Footprinting.md)
+    * [Domain Information](/notas/1.pentesting/1.4.footprinting/1.Domain-Information/Domain-information.md)
+    * [FTP](/notas/1.pentesting/1.4.footprinting/2.FTP/FTP.md)
+    * [SMB](/notas/1.pentesting/1.4.footprinting/3.SMB/SMB.md)
+    * [NFS](/notas/1.pentesting/1.4.footprinting/4.NFS/NFS.md)
+    * [DNS](/notas/1.pentesting/1.4.footprinting/5.DNS/DNS.md)
+    * [SMTP](/notas/1.pentesting/1.4.footprinting/6.SMTP/SMTP.md)
+    * [IMAP-POP3](/notas/1.pentesting/1.4.footprinting/7.IMAP-POP3/IMAP-POP3.md)
+    * [SNMP](/notas/1.pentesting/1.4.footprinting/8.SNMP/SNMP.md)
+    * [MySQL](/notas/1.pentesting/1.4.footprinting/9.MySQL/MySQL.md)
+    * [MSSQL](/notas/1.pentesting/1.4.footprinting/10.MSSQL/MSSQL.md)
+    * [Oracle TNS](/notas/1.pentesting/1.4.footprinting/11.Oracle-TNS/Oracle-TNS.md)
+    * [IPMI](/notas/1.pentesting/1.4.footprinting/12.IPMI/IPMI.md)
+    * [Linux Remote Management Protocols](/notas/1.pentesting/1.4.footprinting/13.Linux-Remote-Management-Protocols/Linux-Remote-Management-Protocols.md)
+    * [Windows Remote Management Protocols](/notas/1.pentesting/1.4.footprinting/14.Windows-Remote-Management-Protocols/Windows-Remote-Management-Protocols.md)
+
+
+* [Pentesting Web](/notas/2.pentesting_web/README.md)
+* [Escalada de Privilegios](/notas/3.escalada_de_privilegios/README.md)
+* [Red Team](/notas/4.red_team/README.md)
+
 ## Articulos
 
 * [🛠 Proyectos](articulos/Proyectos/README.md)
