@@ -146,6 +146,23 @@
 
 * [Pentesting Web](/notas/2.pentesting_web/README.md)
 * [Escalada de Privilegios](/notas/3.escalada_de_privilegios/README.md)
+  * [ Linux](/notas/3.escalada_de_privilegios/1.linux/README.md)
+    * [Enumeración automatizada - Tools](/notas/3.escalada_de_privilegios/1.linux/enumeracion-automatizada-tools.md)
+    * [Kernel Exploit](/notas/3.escalada_de_privilegios/1.linux/kernel-exploit.md)
+    * [Sudo](/notas/3.escalada_de_privilegios/1.linux/sudo.md)
+    * [SUID](/notas/3.escalada_de_privilegios/1.linux/suid.md)
+    * [Capabilities](/notas/3.escalada_de_privilegios/1.linux/capabilities.md)
+    * [Cron Jobs](/notas/3.escalada_de_privilegios/1.linux/cron-jobs.md)
+    * [Path](/notas/3.escalada_de_privilegios/1.linux/path.md)
+    * [NFS](/notas/3.escalada_de_privilegios/1.linux/nfs.md)
+  * [ Windows](/notas/3.escalada_de_privilegios/2.windows/README.md)
+    * [Enumeración automatizada - Tools](/notas/3.escalada_de_privilegios/2.windows/enumeracion-automatizada-tools.md)
+    * [Harvesting Passwords from Usual Spots](/notas/3.escalada_de_privilegios/2.windows/harvesting-passwords-from-usual-spots.md)
+    * [Other Quick Wins](/notas/3.escalada_de_privilegios/2.windows/other-quick-wins.md)
+    * [Abusing Service Misconfigurations](/notas/3.escalada_de_privilegios/2.windows/abusing-service-misconfigurations.md)
+    * [Abusing dangerous privileges](/notas/3.escalada_de_privilegios/2.windows/abusing-dangerous-privileges.md)
+    * [Abusing vulnerable software](/notas/3.escalada_de_privilegios/2.windows/abusing-vulnerable-software.md)
+
 * [Red Team](/notas/4.red_team/README.md)
 
 ## Guias y Herramientas
