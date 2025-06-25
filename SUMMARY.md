@@ -4,10 +4,10 @@
 
 ## Write up
 
-* [📕 DockerLabs](write-up/dockerlabs/README.md)
+* [ DockerLabs](write-up/dockerlabs/README.md)
   * [QueueMedic](write-up/dockerlabs/1.QueueMedic/2024-10-8-Queuemedic.md)
 
-* [📕 Tryhackme](write-up/tryhackme/README.md)
+* [ Tryhackme](write-up/tryhackme/README.md)
   * [VulnneTroasted](write-up/tryhackme/39.VulnneTroasted/2024-03-01-VulnneTroasted.md)
   * [Relevant](write-up/tryhackme/38.Relevant/2024-02-28-Relevant.md)
   * [Bufferoverflowprep](write-up/tryhackme/37.bufferoverflowprep/2024-02-21-bufferoverFlowprep.md)
@@ -48,7 +48,7 @@
   * [Cmspit](write-up/tryhackme/2.CMSpit/2022-03-19-CMSpit.md)
   * [Mustacchio](write-up/tryhackme/1.Mustacchio/2021-09-04-thm-Mustacchio.md)
 
-* [📕 Hackthebox](write-up/hackthebox/README.md)
+* [ Hackthebox](write-up/hackthebox/README.md)
   * [Inject](write-up/hackthebox/28.Inject/2024-08-02-Inject.md)
   * [Busqueda](write-up/hackthebox/27.Busqueda/2024-07-31-Busqueda.md)
   * [Monitors Two](write-up/hackthebox/26.MonitorsTwo/2024-07-30-MonitorsTwo.md)
@@ -78,7 +78,7 @@
   * [Validation](write-up/hackthebox/2.validation/2023-02-03-Validation.md)
   * [Twomillion](write-up/hackthebox/1.twomillion/2023-10-10-TwoMillion.md)
 
-* [📕 PortSwigger](write-up/PortSwigger/README.md)
+* [ PortSwigger](write-up/PortSwigger/README.md)
   * [SQL Injection](write-up/PortSwigger/1.SQL_Injection/README.md)
     * [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](write-up/PortSwigger/1.SQL_Injection/1.Lab_SQL_injection_vulnerability_in_WHERE_clause_allowing_retrieval_of_hidden_data/sql_injection_in_where_clause.md)
     * [Lab: SQL injection vulnerability allowing login bypass](write-up/PortSwigger/1.SQL_Injection/2.Lab_SQL_injection_vulnerability_allowing_login_bypass/Lab_SQL_injection_vulnerability_allowing_login_bypass.md)
@@ -184,13 +184,13 @@
 
 ## Articulos
 
-* [🛠 Proyectos](articulos/Proyectos/README.md)
-  * [📝 Host Port Discovery](articulos/Proyectos/hostPortDiscovery/2023-03-13-HostPortDiscovery.md)
+* [ Proyectos](articulos/Proyectos/README.md)
+  * [ Host Port Discovery](articulos/Proyectos/hostPortDiscovery/2023-03-13-HostPortDiscovery.md)
 
-* [🛠 Laboratorio](articulos/Laboratorio/README.md)
-  * [📝 Hacking Wireles](articulos/Laboratorio/hackingWireless/2022-02-19-HACKING-WIRELESS.md)
+* [ Laboratorio](articulos/Laboratorio/README.md)
+  * [ Hacking Wireles](articulos/Laboratorio/hackingWireless/2022-02-19-HACKING-WIRELESS.md)
 
 ## Vulnerabilidaes
 
-* [🖥 Explotacion](vulnerabilidaes/explotacion/README.md)
+* [ Explotacion](vulnerabilidaes/explotacion/README.md)
   * [CVE-2023-38831](vulnerabilidades/explotacion/CVE-2023-38831/2023-09-10-CVE-2023-38831.md)
