@@ -1,16 +1,26 @@
 ---
 title: Ninja Skills -  Tryhackme
 date: 2023-11-5
-categories: [Write up,Challenge, Linux, Tryhackme]
-tags: [bash, script, easy]     # TAG names should always be lowercase
+categories:
+  - Write up
+  - Challenge
+  - Linux
+  - Tryhackme
+tags:
+  - bash
+  - script
+  - easy
 ---
+
+# Ninja Skills
 
 Este challenge tiene la finalidad de poner en practica un poco de bash encontrando los archivos y las especificaciones que nos da cada uno de las tareas. Vamos usar el comando `find` para encontrar los dicersos archivos.
 
 ![20231106005341.png](20231106005341.png)
 
 Link [Ninja Skills](https://tryhackme.com/room/ninjaskills)
-- Created by [tryhackme](https://tryhackme.com/p/tryhackme) and  [Mokmokmok](https://tryhackme.com/p/Mokmokmok)
+
+* Created by [tryhackme](https://tryhackme.com/p/tryhackme) and  [Mokmokmok](https://tryhackme.com/p/Mokmokmok)
 
 Empezamos, vamos a conectarnos por `ssh`
 
@@ -35,9 +45,10 @@ Podemos guardar todos los archivos en una archivo `txt` para luego hcaer una bus
 /home/v2Vb
 /X1Uy
 ```
+
 Podemos enumerar cada uno de los archivos y la ruta donde se encuentran
 
-## Task 1
+### Task 1
 
 ```java
 find / -type f -group best-group 2>/dev/null
@@ -53,9 +64,7 @@ find / -type f -group best-group 2>/dev/null
 
 `2>/dev/null`: Esta parte del comando redirige cualquier mensaje de error (stderr) a /dev/null, lo que significa que los errores no se mostrarán en la salida estándar. Esto se hace para evitar mensajes de error que puedan aparecer si el grupo "best-group" no existe o si no tienes permiso para acceder a ciertos directorios.
 
-
-
-## Task 2
+### Task 2
 
 ```java
 find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -o -name "FHl1" -o -name "oiMO" -o -name "PFbD" -o -name "rmfX" -o -name "SRSq" -o -name "uqyw" -o -name "v2Vb" -o -name "X1Uy" \) -exec grep -EH '[0-9{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' {} \; 2>/dev/null
@@ -79,7 +88,7 @@ find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -
 
 `2>/dev/null`: Redirige los mensajes de error (stderr) a /dev/null, lo que significa que los errores se descartarán y no se mostrarán en la salida estándar.
 
-## Task 3
+### Task 3
 
 ```java
 find / -type f -exec sha1sum {} \; 2>/dev/null | grep 9d54da7584015647ba052173b84d45e8007eba94
@@ -97,7 +106,7 @@ find / -type f -exec sha1sum {} \; 2>/dev/null | grep 9d54da7584015647ba052173b8
 
 `grep 9d54da7584015647ba052173b84d45e8007eba94`: grep se utiliza para buscar patrones en la entrada que recibe a través de la tubería. En este caso, busca el patrón 9d54da7584015647ba052173b84d45e8007eba94 en la salida generada por el comando sha1sum.
 
-## Task 4
+### Task 4
 
 ```java
 find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -o -name "FHl1" -o -name "oiMO" -o -name "PFbD" -o -name "rmfX" -o -name "SRSq" -o -name "uqyw" -o -name "v2Vb" -o -name "X1Uy" \) -exec wc -l {} \; 2>/dev/null
@@ -113,8 +122,7 @@ find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -
 
 `2>/dev/null`: Esto redirige los mensajes de error (stderr) a /dev/null, lo que significa que los errores se descartarán y no se mostrarán en la salida estándar.
 
-
-## Task 5
+### Task 5
 
 ```java
 find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -o -name "FHl1" -o -name "oiMO" -o -name "PFbD" -o -name "rmfX" -o -name "SRSq" -o -name "uqyw" -o -name "v2Vb" -o -name "X1Uy" \) -exec ls -ln {} \; 2>/dev/null
@@ -130,7 +138,7 @@ find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -
 
 `2>/dev/null`: Esto redirige los mensajes de error (stderr) a `/dev/null`, lo que significa que los errores se descartarán y no se mostrarán en la salida estándar.
 
-## Task 6
+### Task 6
 
 ```java
 find / -type f \( -name "8V2L" -o -name "bny0" -o -name "c4ZX" -o -name "D8B3" -o -name "FHl1" -o -name "oiMO" -o -name "PFbD" -o -name "rmfX" -o -name "SRSq" -o -name "uqyw" -o -name "v2Vb" -o -name "X1Uy" \) -perm +001 2>/dev/null

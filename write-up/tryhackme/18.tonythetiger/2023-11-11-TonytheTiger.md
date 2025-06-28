@@ -1,26 +1,34 @@
 ---
 title: Tony the Tiger - Tryhackme
-date: 2023-11-11
-categories: [Write up, Linux, Tryhackme]
-tags: [serialisation,steganography, easy]     # TAG names should always be lowercase
+date: 2023-11-11T00:00:00.000Z
+categories:
+  - Write up
+  - Linux
+  - Tryhackme
+tags:
+  - serialisation
+  - steganography
+  - easy
 ---
+
+# Tony The Tiger
 
 `Tony the tiger` es una maquina en la que tendremos que explotar una vulnerabiliddad que es`cve-2015-7501` para aceder a la maquima víctima y enumerar las notas que dejo el usuario para obtener las credenciales, luego abusar de los permisos `SUID` del binario `find`.
 
 ![20231110123146.png](20231110123146.png)
 
-- Link [tonythetiger](https://tryhackme.com/room/tonythetiger)
+* Link [tonythetiger](https://tryhackme.com/room/tonythetiger)
+* Created by  [cmnatic](https://tryhackme.com/p/cmnatic)
 
-- Created by  [cmnatic](https://tryhackme.com/p/cmnatic)
+## Walkthrough
 
-# Walkthrough
+### Enumeración
 
-## Enumeración
----
+***
 
-### Escaneo de puertos
+#### Escaneo de puertos
 
-Empezamos con nuestra herramienta preferida `nmap` para enumerar los puertos abiertos 
+Empezamos con nuestra herramienta preferida `nmap` para enumerar los puertos abiertos
 
 ```java
 ❯ nmap -p- --open --min-rate 1000 -vvv [IP-VICTIM] -Pn -n  -oG allportsScan
@@ -52,8 +60,7 @@ Expliquemos un poco mas de los parametros de nmap:
 
 `--min-rate 1000`: Establece la velocidad mínima de envío de paquetes a 1000 por segundo. Esto puede aumentar la velocidad del escaneo, pero también puede aumentar la detección por parte de sistemas de prevención de intrusiones.
 
-`-vvv`: Habilita la verbosidad máxima, lo que significa que se mostrará una salida detallada del escaneo.
-[IP-VICTIM]: Sustituye esto con la dirección IP del objetivo que deseas escanear.
+`-vvv`: Habilita la verbosidad máxima, lo que significa que se mostrará una salida detallada del escaneo. \[IP-VICTIM]: Sustituye esto con la dirección IP del objetivo que deseas escanear.
 
 `-Pn`: Desactiva la detección de hosts para que no realice un ping de descubrimiento de hosts antes del escaneo. Útil cuando el host objetivo está configurado para no responder a pings.
 
@@ -263,13 +270,13 @@ Expliquemos mas los parametros de `nmap`:
 
 `-oN servicesScan`: Guarda la salida del escaneo en un archivo llamado servicesScan. Este archivo contendrá información detallada sobre los servicios y puertos encontrados.
 
-### Puerto 80
+#### Puerto 80
 
 Visitamos el sitio web y encontramos el siguiente contenido
 
 ![20231110124810.png](20231110124810.png)
 
-En la imagen, haciendo uso de strings observamos nuestra primera flag 
+En la imagen, haciendo uso de strings observamos nuestra primera flag
 
 ![20231110155938.png](20231110155938.png)
 
@@ -279,13 +286,13 @@ En la imagen, haciendo uso de strings observamos nuestra primera flag
 'THM{Tony_Sure_Loves_Frosted_Flakes}(dQ
 ```
 
-### Puerto 8080
+#### Puerto 8080
 
-En este puerto encontramos un servicio `jboss` 
+En este puerto encontramos un servicio `jboss`
 
 ![20231110124832.png](20231110124832.png)
 
-Enumeramos este sitio, en la cual encotraremos un panel de login `http://[IP-VICTIM]:8080/admin-console/login.seam` 
+Enumeramos este sitio, en la cual encotraremos un panel de login `http://[IP-VICTIM]:8080/admin-console/login.seam`
 
 ![20231110160916.png](20231110160916.png)
 
@@ -293,13 +300,13 @@ Que tiene las contraseñas por defecto: `admin: admin`. Asi podemos iniciar sesi
 
 ![20231110161014.png](20231110161014.png)
 
-## Explotación
+### Explotación
 
 Pero no hay mucho que hacer en el panel. Enumerando damos con la versión y descubrimos que es una versión vulnerable `cve-2015-7501`.
 
-La herramienta que usaremos para explotar lo puedes encontrar en [https://github.com/joaomatosf/jexboss](https://github.com/joaomatosf/jexboss) 
+La herramienta que usaremos para explotar lo puedes encontrar en [https://github.com/joaomatosf/jexboss](https://github.com/joaomatosf/jexboss)
 
-Ejecutamos el exploit agregando los parametros de la máquina victima 
+Ejecutamos el exploit agregando los parametros de la máquina victima
 
 ```java
 ❯ python jexboss.py -host http://[IP-VICTIM]:8080
@@ -309,8 +316,9 @@ Ejecutamos el exploit agregando los parametros de la máquina victima
 
 elegimos la segunda opción, que nos pedira la `ip` y `puerto` donde iniciamos el `ncat` ala escucha
 
-## Escalada de privilegios
-### Usuario - cmnatic
+### Escalada de privilegios
+
+#### Usuario - cmnatic
 
 ![20231110171805.png](20231110171805.png)
 
@@ -342,7 +350,7 @@ Password: likeaboss
 
 En la nota podemos ver una credencial que es para `jboss`, por lo que haremos uso de este para loguearnos como `jboss`
 
-### Usuario - jboss
+#### Usuario - jboss
 
 ![20231110173735.png](20231110173735.png)
 
@@ -357,9 +365,9 @@ User jboss may run the following commands on thm-java-deserial:
 jboss@thm-java-deserial:~$     
 ```
 
-### Usuario - root
+#### Usuario - root
 
-Ejecutando `sudo find . -exec /bin/sh \; -quit` obtendremos acederemos a una shell como `root` 
+Ejecutando `sudo find . -exec /bin/sh \; -quit` obtendremos acederemos a una shell como `root`
 
 ![20231110174614.png](20231110174614.png)
 

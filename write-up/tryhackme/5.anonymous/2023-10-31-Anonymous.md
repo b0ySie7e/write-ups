@@ -1,42 +1,46 @@
 ---
 title: Anonymous - Tryhackme
-date: 2023-10-31
-categories: [Write up, Linux, Tryhackme]
-tags: [suid, ftp, smb, easy]     # TAG names should always be lowercase
+date: 2023-10-31T00:00:00.000Z
+categories:
+  - Write up
+  - Linux
+  - Tryhackme
+tags:
+  - suid
+  - ftp
+  - smb
+  - easy
 ---
+
+# Anonymous
 
 ![20231017160454.png](20231017160454.png)
 
 La máquina 'Anonymous' es un entorno de pruebas diseñado para simular una intrusión en un sistema. En este escenario, se emplean servicios de FTP y SMB (Server Message Block) como puntos de entrada para llevar a cabo la intrusión. Estos servicios a menudo se encuentran en sistemas y redes empresariales y, si no se configuran adecuadamente, pueden presentar vulnerabilidades que los atacantes pueden aprovechar.
 
-Created by  [Nameless0ne](https://tryhackme.com/p/Nameless0ne)
+Created by  [Nameless0ne](https://tryhackme.com/p/Nameless0ne)
 
-[Anonymous - tryhackme ](https://tryhackme.com/room/anonymous)
+[Anonymous - tryhackme](https://tryhackme.com/room/anonymous)
 
-## Enumeración 
+### Enumeración
 
-### Enumeración de Puertos abiertos
+#### Enumeración de Puertos abiertos
 
 Empezaremos haciendo un escaneo de los puertos abiertos de la maquina victima
 
 ```java
 ❯ nmap -p- --open --min-rate 5000 -Pn -n -vvv [IP]
 ```
+
 Los parametros que usamos son:
 
-- `-p-`: Este parámetro indica a Nmap que escanee todos los puertos posibles en el host de destino. El guion ("-") es una abreviatura que representa el rango de puertos del 1 al 65535.
-
-- `--open`: Este parámetro le indica a Nmap que solo muestre los puertos abiertos en el resultado del escaneo. Es útil para reducir la cantidad de información a mostrar.
-
-- `--min-rate 5000`: Este parámetro establece la velocidad mínima a la que Nmap enviará paquetes de sondeo al host de destino. En este caso, se ha configurado a 5000 paquetes por segundo. Un valor alto como este puede acelerar el escaneo, pero ten en cuenta que también puede aumentar la posibilidad de detectar los escaneos por parte de sistemas de defensa.
-
-- `-Pn`: Este parámetro indica a Nmap que no realice un escaneo de ping para verificar si el host de destino está activo. En lugar de eso, Nmap asumirá que el host está activo y escaneará todos los puertos especificados.
-
-- `-n`: Con este parámetro, se le dice a Nmap que no realice la resolución de DNS para las direcciones IP. Esto significa que no intentará traducir las direcciones IP a nombres de host.
-
-- `-vvv`: Esto es una opción de verbosidad que le indica a Nmap que muestre una salida extremadamente detallada. Cuantos más "v" uses, más detallada será la salida.
-
-- `[IP]`: Esta es la dirección IP del host que se está escaneando. Es el objetivo del escaneo.
+* `-p-`: Este parámetro indica a Nmap que escanee todos los puertos posibles en el host de destino. El guion ("-") es una abreviatura que representa el rango de puertos del 1 al 65535.
+* `--open`: Este parámetro le indica a Nmap que solo muestre los puertos abiertos en el resultado del escaneo. Es útil para reducir la cantidad de información a mostrar.
+* `--min-rate 5000`: Este parámetro establece la velocidad mínima a la que Nmap enviará paquetes de sondeo al host de destino. En este caso, se ha configurado a 5000 paquetes por segundo. Un valor alto como este puede acelerar el escaneo, pero ten en cuenta que también puede aumentar la posibilidad de detectar los escaneos por parte de sistemas de defensa.
+* `-Pn`: Este parámetro indica a Nmap que no realice un escaneo de ping para verificar si el host de destino está activo. En lugar de eso, Nmap asumirá que el host está activo y escaneará todos los puertos especificados.
+* `-n`: Con este parámetro, se le dice a Nmap que no realice la resolución de DNS para las direcciones IP. Esto significa que no intentará traducir las direcciones IP a nombres de host.
+* `-vvv`: Esto es una opción de verbosidad que le indica a Nmap que muestre una salida extremadamente detallada. Cuantos más "v" uses, más detallada será la salida.
+* `[IP]`: Esta es la dirección IP del host que se está escaneando. Es el objetivo del escaneo.
 
 ```java
 Starting Nmap 7.94 ( https://nmap.org ) at 2023-10-17 16:07 -05
@@ -59,7 +63,7 @@ PORT    STATE SERVICE      REASON
 445/tcp open  microsoft-ds syn-ack
 ```
 
-### Enumeración de los servicios y versiones 
+#### Enumeración de los servicios y versiones
 
 Una vez enumerado los puertos abiertos, vamos a realizar el escaneo de los servicios
 
@@ -67,7 +71,7 @@ Una vez enumerado los puertos abiertos, vamos a realizar el escaneo de los servi
 ❯ nmap -p21,22,139,445 -sC -sV -Pn -n -vvv [IP] -oN servicesScan
 ```
 
-Los parametros son: 
+Los parametros son:
 
 `-sC`: Esta opción activa el escaneo de scripts de Nmap. Los scripts de Nmap son pequeños programas que realizan tareas específicas durante el escaneo, como la detección de vulnerabilidades o la obtención de información adicional sobre los servicios en ejecución.
 
@@ -79,7 +83,7 @@ Los parametros son:
 
 `-vvv`: Al igual que en la línea de comando anterior, esta opción establece un alto nivel de verbosidad y hará que Nmap muestre una salida extremadamente detallada.
 
-[IP]: Aquí deberías reemplazar "[IP]" con la dirección IP del host que deseas escanear. Es el objetivo del escaneo.
+\[IP]: Aquí deberías reemplazar "\[IP]" con la dirección IP del host que deseas escanear. Es el objetivo del escaneo.
 
 `-oN servicesScan`: Con este parámetro, estás especificando que Nmap debe guardar la salida del escaneo en un archivo con el nombre "servicesScan". Esto es útil para revisar la información recopilada en el futuro.
 
@@ -155,7 +159,7 @@ Host script results:
 |_  System time: 2023-10-17T21:10:07+00:00
 ```
 
-### Enumeración del SMB-445 
+#### Enumeración del SMB-445
 
 Para realizar la enumeración del servicio `smb`, usaremos `smbmap`
 
@@ -165,10 +169,9 @@ Para realizar la enumeración del servicio `smb`, usaremos `smbmap`
 
 `smbmap`: Esta es la herramienta que estás utilizando, smbmap. Esta herramienta se utiliza para enumerar recursos compartidos de red y permisos en servidores SMB, como máquinas Windows.
 
-`-H [IP]`: Este parámetro se utiliza para especificar la dirección IP del host de destino al que deseas conectarte a través de SMB. En este caso, el host de destino tiene la dirección [IP].
+`-H [IP]`: Este parámetro se utiliza para especificar la dirección IP del host de destino al que deseas conectarte a través de SMB. En este caso, el host de destino tiene la dirección \[IP].
 
 `-u "guest"`: Aquí, estás proporcionando un nombre de usuario para autenticarte en el servidor SMB. En este caso, el nombre de usuario es "guest". "Guest" es un usuario especial que se utiliza comúnmente para acceder a recursos compartidos SMB sin necesidad de autenticación o con credenciales limitadas.
-
 
 ```java
 
@@ -196,7 +199,7 @@ Para realizar la enumeración del servicio `smb`, usaremos `smbmap`
 
 Tenemos una carpeta que podemos leer, pero no encontraremos nada interesante para realizar la intrusión
 
-### Enumeración del FTP-21
+#### Enumeración del FTP-21
 
 Tenemos acceso al servicio `ftp` como usuario `anonymous`
 
@@ -212,9 +215,10 @@ Logramos ingresar al servicio `ftp` y podemos visualizar algunos archivos
 
 El archivo `clean.sh` se ve interesante y podemos observar que podemos sobre escribir
 
-## Explotación
+### Explotación
 
-### FTP
+#### FTP
+
 Para probar, podemos hacer un `put clean.sh` nos damos cuenta que podemos escribir en el archivo
 
 Creamos un archivo `clean.sh`, en el que estará nuestra reverse shell. Podemos usar el siguiente comando:
@@ -230,11 +234,11 @@ Ahora nos ponemos a la escucha con `ncat` para pder recibir la shell
 
 ¡VAMOS! tenemos una shell de la maquina victima.
 
-## Escalación de privilegios
+### Escalación de privilegios
 
-### Usuario: namelessone
+#### Usuario: namelessone
 
-Ahora para escalar privilegios realizamos un `find / -type f -perm -04000 -ls 2>/dev/null` para realizar una busqueda de binarios que son `SUID` 
+Ahora para escalar privilegios realizamos un `find / -type f -perm -04000 -ls 2>/dev/null` para realizar una busqueda de binarios que son `SUID`
 
 ```java
 namelessone@anonymous:~$ find / -type f -perm -04000 -ls 2>/dev/null
@@ -262,7 +266,7 @@ Ahora ejecutaremos el comando, para poder tener una shell del usuario `root`
 namelessone@anonymous:~$ /usr/bin/env /bin/sh -p
 ```
 
-### Usuario: root
+#### Usuario: root
 
 ![20231017170705.png](20231017170705.png)
 

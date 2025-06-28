@@ -1,3 +1,2 @@
-# 🛠 Laboratorio
-
+# Laboratorio
 

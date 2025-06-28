@@ -1,12 +1,15 @@
 # Configuración de interfaces
 
+## Configuración de interfaces
+
 Tendremos en diseño de red para nuestros Firewalls
 
 ![20240710120545.png](20240710120545.png)
 
-# Configuración de WAN
+## Configuración de WAN
 
-## Puerto 2
+### Puerto 2
+
 Para configurar una wan (ISP) elegiremos el puerto que deseamos configurar, en nuestro caso será el puerto 2 y 3.
 
 ![20240710121550.png](20240710121550.png)
@@ -19,7 +22,8 @@ Tendremos que configurar y agregar los siguiente: Alias que en mi caso le puse `
 
 Luego simplemente haremos click en `OK` y se guardara.
 
-## Puerto 3
+### Puerto 3
+
 Ahora hagamos lo mismo para el Puerto 3 .
 
 ![20240710121859.png](20240710121859.png)
@@ -34,7 +38,8 @@ Pero aun no tendremos conectividad con internet.
 
 Esto ocurre porque nos falta configurar el `static Routes`.
 
-## Configuración de Static Routes
+### Configuración de Static Routes
+
 Iremos al apartado de `static routes` y seleccionaremos `Create New`
 
 ![20240710123121.png](20240710123121.png)
@@ -51,8 +56,8 @@ Ahora probamos nuevamente y debemos de tener conectividad con internet.
 
 ![20240710123341.png](20240710123341.png)
 
+## Configuración de LAN
 
-# Configuración de LAN
 La configuración de LAN es parecida a la de WAN solo se diferencia en el rol
 
 Ingresamos a la opción de `Interfaces` y seleccionamos el puerto que deseamos configurar.
@@ -67,15 +72,16 @@ Luego podremos observar de esta manera si lo configuramos bien:
 
 ![20240710124433.png](20240710124433.png)
 
+## Configuración de WAN por consola
 
-# Configuración de WAN por consola
 Para configurar la Wan del SITE B lo realizaremos por consola. En la siguiente imagen vemos que tenemos las interfaces sin configurar:
 
 ![20240710125316.png](20240710125316.png)
 
 Ahora ingresaremos al terminal, lo podemos hacer desde el `cli` del sitio web o desde putty contactándonos por ssh
 
-### Port2 
+#### Port2
+
 Primero debemos ingresar a la configuración de las interfaces con el comando:
 
 ```c
@@ -111,7 +117,8 @@ La diferencia de `next` y `end` radica en que next te deja o no sale de la confi
 
 ![20240710125739.png](20240710125739.png)
 
-### Port3
+#### Port3
+
 Repitamos el proceso con el puerto 3
 
 ```c
@@ -128,16 +135,15 @@ Luego de configurar podemos observar desde la interfaz la configuración que rea
 
 ![20240710125938.png](20240710125938.png)
 
-## Configuración de Static Routes por consola
+### Configuración de Static Routes por consola
 
-Para agregar la configuración de `static routes`  ingresaremos a la configuración, en este caso podemos ingresar con el comando:
+Para agregar la configuración de `static routes` ingresaremos a la configuración, en este caso podemos ingresar con el comando:
 
 ```c
 SITE-B # config router static 
 ```
 
-Con `show` podemos ver que no se tiene ninguna configuración.
- ![20240710130737.png](20240710130737.png)
+Con `show` podemos ver que no se tiene ninguna configuración.![20240710130737.png](20240710130737.png)
 
 Agregaremos y para ello debemos de ingresar el siguiente comando:
 
@@ -173,15 +179,16 @@ SITE-B (2) # set distance 15
 SITE-B (2) # end
 ```
 
-Luego de agregarlos o ingresado los comando indicados podremos ver la siguiente configuración :
-![20240710131513.png](20240710131513.png)
+Luego de agregarlos o ingresado los comando indicados podremos ver la siguiente configuración :![20240710131513.png](20240710131513.png)
 
 luego verificamos que tengamos conectividad a internet:
 
 ![20240710133912.png](20240710133912.png)
-# Configuración de LAN por consola
+
+## Configuración de LAN por consola
 
 Para realizar la configuración de la `LAN` debemos ingresar los siguientes comandos, esto se parece mucho a la configuración de un wan a diferencia de que se asigna otro rol.
+
 ```c
 SITE-B # config system interface 
 SITE-B (interface) # edit port4 
@@ -198,4 +205,3 @@ SITE-B (interface) # end
 Luego de configurarlo podremos ver las interfaces configuradas:
 
 ![20240710130303.png](20240710130303.png)
-

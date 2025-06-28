@@ -1,3 +1,3 @@
-# 📕 Hackthebox
+# Hackthebox
 
 ![Hackthebox](hackthebox.webp)

