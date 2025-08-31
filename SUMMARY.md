@@ -47,6 +47,7 @@
   * [Cmspit](write-up/tryhackme/2.CMSpit/2022-03-19-CMSpit.md)
   * [Mustacchio](write-up/tryhackme/1.Mustacchio/2021-09-04-thm-Mustacchio.md)
 * [Hackthebox](write-up/hackthebox/README.md)
+  * [Titanic](write-up/hackthebox/29.Titanic/2025-08-31-Titanic.md)
   * [Inject](write-up/hackthebox/28.Inject/2024-08-02-Inject.md)
   * [Busqueda](write-up/hackthebox/27.Busqueda/2024-07-31-Busqueda.md)
   * [Monitors Two](write-up/hackthebox/26.MonitorsTwo/2024-07-30-MonitorsTwo.md)
