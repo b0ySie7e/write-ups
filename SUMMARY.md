@@ -109,14 +109,34 @@
     * [SameSite Lax bypass via cookie refresh](write-up/PortSwigger/3.CSRF/10.SameSite%20Lax%20bypass%20via%20cookie%20refresh/10.SameSite%20Lax%20bypass%20via%20cookie%20refresh.md)
     * [CSRF where Referer validation depends on header being present](write-up/PortSwigger/3.CSRF/11.CSRF%20where%20Referer%20validation%20depends%20on%20header%20being%20present/11.CSRF%20where%20Referer%20validation%20depends%20on%20header%20being%20present.md)
     * [CSRF with broken Referer validation](write-up/PortSwigger/3.CSRF/12.CSRF%20with%20broken%20Referer%20validation/12.CSRF%20with%20broken%20Referer%20validation.md)
-
   * [Path Traversal](write-up/PortSwigger/4.Path_Traversal/README.md)
-
-
+    * [File path traversal, simple case](write-up/PortSwigger/4.Path_Traversal/1.File%20path%20traversal,%20simple%20case/1.File%20path%20traversal,%20simple%20case.md)
+    * [File path traversal, traversal sequences blocked with absolute path bypass](write-up/PortSwigger/4.Path_Traversal/2.File%20path%20traversal,%20traversal%20sequences%20blocked%20with%20absolute%20path%20bypass/2.File%20path%20traversal,%20traversal%20sequences%20blocked%20with%20absolute%20path%20bypass.md)
+    * [File path traversal, traversal sequences stripped non-recursively](write-up/PortSwigger/4.Path_Traversal/3.File%20path%20traversal,%20traversal%20sequences%20stripped%20non-recursively/3.File%20path%20traversal,%20traversal%20sequences%20stripped%20non-recursively.md)
+    * [File path traversal, traversal sequences stripped with superfluous URL-decode](write-up/PortSwigger/4.Path_Traversal/4.File%20path%20traversal,%20traversal%20sequences%20stripped%20with%20superfluous%20URL-decode/4.File%20path%20traversal,%20traversal%20sequences%20stripped%20with%20superfluous%20URL-decode.md)
+    * [File path traversal, validation of start of path](write-up/PortSwigger/4.Path_Traversal/5.File%20path%20traversal,%20validation%20of%20start%20of%20path/5.File%20path%20traversal,%20validation%20of%20start%20of%20path.md)
+    * [File path traversal, validation of file extension with null byte bypass](write-up/PortSwigger/4.Path_Traversal/6.File%20path%20traversal,%20validation%20of%20file%20extension%20with%20null%20byte%20bypass/6.File%20path%20traversal,%20validation%20of%20file%20extension%20with%20null%20byte%20bypass.md)
   * [Autenthentication vulnerabilities](write-up/PortSwigger/5.Authentication%20vulnerabilities/README.md)
+    * [Username enumeration via different responses](write-up/PortSwigger/5.Authentication%20vulnerabilities/1.Username%20enumeration%20via%20different%20responses/1.Username%20enumeration%20via%20different%20responses.md)
+    * [Username enumeration via subtly different responses](write-up/PortSwigger/5.Authentication%20vulnerabilities/2.Username%20enumeration%20via%20subtly%20different%20responses/2.Username%20enumeration%20via%20subtly%20different%20responses.md)
+    * [Username enumeration via response timing](write-up/PortSwigger/5.Authentication%20vulnerabilities/3.Username%20enumeration%20via%20response%20timing/3.Username%20enumeration%20via%20response%20timing.md)
+    * [Broken brute-force protection, IP block](write-up/PortSwigger/5.Authentication%20vulnerabilities/4.Broken%20brute-force%20protection,%20IP%20block/4.Broken%20brute-force%20protection,%20IP%20block.md)
+    * [Username enumeration via account lock](write-up/PortSwigger/5.Authentication%20vulnerabilities/5.Username%20enumeration%20via%20account%20lock/5.Username%20enumeration%20via%20account%20lock.md)
+    * [2FA simple bypass](write-up/PortSwigger/5.Authentication%20vulnerabilities/6.2FA%20simple%20bypass/6.2FA%20simple%20bypass.md)
+    * [2FA broken logic](write-up/PortSwigger/5.Authentication%20vulnerabilities/7.2FA%20broken%20logic/7.2FA%20broken%20logic.md)
+    * [Brute-forcing a stay-logged-in cookie](write-up/PortSwigger/5.Authentication%20vulnerabilities/8.Brute-forcing%20a%20stay-logged-in%20cookie/8.Brute-forcing%20a%20stay-logged-in%20cookie.md)
+    * [Offline password cracking](write-up/PortSwigger/5.Authentication%20vulnerabilities/9.Offline%20password%20cracking/9.Offline%20password%20cracking.md)
+    * [Password reset broken logic](write-up/PortSwigger/5.Authentication%20vulnerabilities/10.Password%20reset%20broken%20logic/10.Password%20reset%20broken%20logic.md)
+    * [Password reset poisoning via middleware](write-up/PortSwigger/5.Authentication%20vulnerabilities/11.Password%20reset%20poisoning%20via%20middleware/11.Password%20reset%20poisoning%20via%20middleware.md)
+    * [Password brute-force via password change](write-up/PortSwigger/5.Authentication%20vulnerabilities/12.Password%20brute-force%20via%20password%20change/12.Password%20brute-force%20via%20password%20change.md)
 
+  * [SSRF](write-up/PortSwigger/6.SSRF/README.md)
+    * [Basic SSRF against the local server](write-up/PortSwigger/6.SSRF/1.Basic%20SSRF%20against%20the%20local%20server/1.Basic%20SSRF%20against%20the%20local%20server.md) 
+    * [Basic SSRF against another back-end system](write-up/PortSwigger/6.SSRF/2.Basic%20SSRF%20against%20another%20back-end%20system/2.Basic%20SSRF%20against%20another%20back-end%20system.md) 
+    * [SSRF with blacklist-based input filter](write-up/PortSwigger/6.SSRF/3.SSRF%20with%20blacklist-based%20input%20filter/3.SSRF%20with%20blacklist-based%20input%20filter.md)
+    * [SSRF with filter bypass via open redirection vulnerability](write-up/PortSwigger/6.SSRF/4.SSRF%20with%20filter%20bypass%20via%20open%20redirection%20vulnerability/4.SSRF%20with%20filter%20bypass%20via%20open%20redirection%20vulnerability.md) 
+    * [Blind SSRF with out-of-band detection](write-up/PortSwigger/6.SSRF/5.Blind%20SSRF%20with%20out-of-band%20detection/5.Blind%20SSRF%20with%20out-of-band%20detection.md) 
 
-  * [SSRF](write-up/PortSwigger/6.SSRF/README.md) 
 ## Notas
 
 * [Pentesting](notas/1.pentesting/README.md)
