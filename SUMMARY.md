@@ -95,7 +95,28 @@
     * [Lab: Blind SQL injection with out-of-band interaction](write-up/PortSwigger/1.SQL_Injection/14.Lab_Blind_SQL_injection_with_out-of-band_interaction/Lab_Blind_SQL_injection_with_out-of-band_interaction.md)
     * [Lab: Blind SQL injection with out-of-band data exfiltration](write-up/PortSwigger/1.SQL_Injection/15.Lab_Blind_SQL_injection_with_out-of-band_data_exfiltration/Blind_SQL_injection_with_out-of-band_data_exfiltration.md)
     * [Lab: SQL injection with filter bypass via XML encoding](write-up/PortSwigger/1.SQL_Injection/16.Lab_SQL_injection_with_filter_bypass_via_XML_encoding/SQL_injection_with_filter_bypass_via_XML_encoding.md)
+  
+  * [CSRF](write-up/PortSwigger/3.CSRF/README.md)
+    * [CSRF vulnerability with no defenses](write-up/PortSwigger/3.CSRF/1.CSRF%20vulnerability%20with%20no%20defenses/1.CSRF%20vulnerability%20with%20no%20defenses.md)
+    * [CSRF where token validation depends on request method](write-up/PortSwigger/3.CSRF/2.CSRF%20where%20token%20validation%20depends%20on%20request%20method/2.CSRF%20where%20token%20validation%20depends%20on%20request%20method.md)
+    * [CSRF where token validation depends on token being present](write-up/PortSwigger/3.CSRF/3.CSRF%20where%20token%20validation%20depends%20on%20token%20being%20presentken/3.CSRF%20where%20token%20validation%20depends%20on%20token%20being%20present.md)
+    * [CSRF where token is not tied to user session](write-up/PortSwigger/3.CSRF/4.CSRF%20where%20token%20is%20not%20tied%20to%20user%20session/4.%20%20CSRF%20where%20token%20is%20not%20tied%20to%20user%20session.md)
+    * [CSRF where token is tied to non-session cookie](write-up/PortSwigger/3.CSRF/5.CSRF%20where%20token%20is%20tied%20to%20non-session%20cookie/5.CSRF%20where%20token%20is%20tied%20to%20non-session%20cookie.md)
+    * [CSRF where token is duplicated in cookie](write-up/PortSwigger/3.CSRF/6.CSRF%20where%20token%20is%20duplicated%20in%20cookie/6.CSRF%20where%20token%20is%20duplicated%20in%20cookie.md)
+    * [SameSite Lax bypass via method override](write-up/PortSwigger/3.CSRF/7.SameSite%20Lax%20bypass%20via%20method%20override/7.SameSite%20Lax%20bypass%20via%20method%20override.md)
+    * [SameSite Strict bypass via client-side redirect](write-up/PortSwigger/3.CSRF/8.SameSite%20Strict%20bypass%20via%20client-side%20redirect/8.SameSite%20Strict%20bypass%20via%20client-side%20redirect.md)
+    * [SameSite Strict bypass via sibling domain](write-up/PortSwigger/3.CSRF/9.SameSite%20Strict%20bypass%20via%20sibling%20domain/9.SameSite%20Strict%20bypass%20via%20sibling%20domain.md)
+    * [SameSite Lax bypass via cookie refresh](write-up/PortSwigger/3.CSRF/10.SameSite%20Lax%20bypass%20via%20cookie%20refresh/10.SameSite%20Lax%20bypass%20via%20cookie%20refresh.md)
+    * [CSRF where Referer validation depends on header being present](write-up/PortSwigger/3.CSRF/11.CSRF%20where%20Referer%20validation%20depends%20on%20header%20being%20present/11.CSRF%20where%20Referer%20validation%20depends%20on%20header%20being%20present.md)
+    * [CSRF with broken Referer validation](write-up/PortSwigger/3.CSRF/12.CSRF%20with%20broken%20Referer%20validation/12.CSRF%20with%20broken%20Referer%20validation.md)
 
+  * [Path Traversal](write-up/PortSwigger/4.Path_Traversal/README.md)
+
+
+  * [Autenthentication vulnerabilities](write-up/PortSwigger/5.Authentication%20vulnerabilities/README.md)
+
+
+  * [SSRF](write-up/PortSwigger/6.SSRF/README.md) 
 ## Notas
 
 * [Pentesting](notas/1.pentesting/README.md)
