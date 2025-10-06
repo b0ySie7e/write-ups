@@ -96,7 +96,7 @@
     * [Lab: Blind SQL injection with out-of-band data exfiltration](write-up/PortSwigger/1.SQL_Injection/15.Lab_Blind_SQL_injection_with_out-of-band_data_exfiltration/Blind_SQL_injection_with_out-of-band_data_exfiltration.md)
     * [Lab: SQL injection with filter bypass via XML encoding](write-up/PortSwigger/1.SQL_Injection/16.Lab_SQL_injection_with_filter_bypass_via_XML_encoding/SQL_injection_with_filter_bypass_via_XML_encoding.md)
 
-  * [Cors Site Scripting](write-up/PortSwigger/2.Cross-site_scripting/README.md)
+  * [Cross-site scripting](write-up/PortSwigger/2.Cross-site_scripting/README.md)
     * [Reflected XSS into HTML context with nothing encoded](write-up/PortSwigger/2.Cross-site_scripting/1.Lab_Reflected_XSS_into_HTML_context_with_nothing_encoded/Reflected_XSS_into_HTML_context_with_nothing_encoded.md)
     * [Stored XSS into HTML context with nothing encoded](write-up/PortSwigger/2.Cross-site_scripting/2.Lab_Stored_XSS_into_HTML_context_with_nothing_encoded/Stored_XSS_into_HTML_context_with_nothing_encoded.md)
     * [DOM XSS in `document.write` sink using source `location.search`](write-up/PortSwigger/2.Cross-site_scripting/3.Lab_DOM_XSS_in_document.write_sink_using_source_location.search/DOM_XSS_in_document.write_sink_using_source_location.search.md)
