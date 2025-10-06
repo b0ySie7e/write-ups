@@ -137,6 +137,19 @@
     * [SSRF with filter bypass via open redirection vulnerability](write-up/PortSwigger/6.SSRF/4.SSRF%20with%20filter%20bypass%20via%20open%20redirection%20vulnerability/4.SSRF%20with%20filter%20bypass%20via%20open%20redirection%20vulnerability.md) 
     * [Blind SSRF with out-of-band detection](write-up/PortSwigger/6.SSRF/5.Blind%20SSRF%20with%20out-of-band%20detection/5.Blind%20SSRF%20with%20out-of-band%20detection.md) 
 
+  * [CORS](write-up/PortSwigger/7.CORS/README.md)
+    * [CORS vulnerability with basic origin reflection](write-up/PortSwigger/7.CORS/1.CORS%20vulnerability%20with%20basic%20origin%20reflection/1.CORS%20vulnerability%20with%20basic%20origin%20reflection.md)
+    * [CORS vulnerability with trusted null origin](write-up/PortSwigger/7.CORS/2.CORS%20vulnerability%20with%20trusted%20null%20origin/2.CORS%20vulnerability%20with%20trusted%20null%20origin.md)
+    * [CORS vulnerability with trusted insecure protocols](write-up/PortSwigger/7.CORS/3.CORS%20vulnerability%20with%20trusted%20insecure%20protocols/3.CORS%20vulnerability%20with%20trusted%20insecure%20protocols.md)
+ 
+  * [Clickjacking](write-up/PortSwigger/9.Clickjacking/README.md)
+    * [Basic clickjacking with CSRF token protection](write-up/PortSwigger/9.Clickjacking/1.Basic%20clickjacking%20with%20CSRF%20token%20protection/1.Basic%20clickjacking%20with%20CSRF%20token%20protection.md)
+    * [Clickjacking with form input data prefilled from a URL parameter](write-up/PortSwigger/9.Clickjacking/2.Clickjacking%20with%20form%20input%20data%20prefilled%20from%20a%20URL%20paramete/2.Clickjacking%20with%20form%20input%20data%20prefilled%20from%20a%20URL%20paramete.md)
+    * [Clickjacking with a frame buster script](write-up/PortSwigger/9.Clickjacking/3.lickjacking%20with%20a%20frame%20buster%20script/3.Clickjacking%20with%20a%20frame%20buster%20script.md)
+    * [Exploiting clickjacking vulnerability to trigger DOM-based XSS](write-up/PortSwigger/9.Clickjacking/4.Exploiting%20clickjacking%20vulnerability%20to%20trigger%20DOM-based%20XSS/4.Exploiting%20clickjacking%20vulnerability%20to%20trigger%20DOM-based%20XSS.md)
+    * [Multistep clickjacking](write-up/PortSwigger/9.Clickjacking/5.Multistep%20clickjacking/5.%20Multistep%20clickjacking.md)
+
+
 ## Notas
 
 * [Pentesting](notas/1.pentesting/README.md)
