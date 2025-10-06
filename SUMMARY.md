@@ -95,7 +95,21 @@
     * [Lab: Blind SQL injection with out-of-band interaction](write-up/PortSwigger/1.SQL_Injection/14.Lab_Blind_SQL_injection_with_out-of-band_interaction/Lab_Blind_SQL_injection_with_out-of-band_interaction.md)
     * [Lab: Blind SQL injection with out-of-band data exfiltration](write-up/PortSwigger/1.SQL_Injection/15.Lab_Blind_SQL_injection_with_out-of-band_data_exfiltration/Blind_SQL_injection_with_out-of-band_data_exfiltration.md)
     * [Lab: SQL injection with filter bypass via XML encoding](write-up/PortSwigger/1.SQL_Injection/16.Lab_SQL_injection_with_filter_bypass_via_XML_encoding/SQL_injection_with_filter_bypass_via_XML_encoding.md)
-  
+
+  * [Cors Site Scripting](write-up/PortSwigger/2.Cross-site_scripting/README.md)
+    * [Reflected XSS into HTML context with nothing encoded](write-up/PortSwigger/2.Cross-site_scripting/1.Lab_Reflected_XSS_into_HTML_context_with_nothing_encoded/Reflected_XSS_into_HTML_context_with_nothing_encoded.md)
+    * [Stored XSS into HTML context with nothing encoded](write-up/PortSwigger/2.Cross-site_scripting/2.Lab_Stored_XSS_into_HTML_context_with_nothing_encoded/Stored_XSS_into_HTML_context_with_nothing_encoded.md)
+    * [DOM XSS in `document.write` sink using source `location.search`](write-up/PortSwigger/2.Cross-site_scripting/3.Lab_DOM_XSS_in_document.write_sink_using_source_location.search/DOM_XSS_in_document.write_sink_using_source_location.search.md)
+    * [DOM XSS in innerHTML sink using source location.search](write-up/PortSwigger/2.Cross-site_scripting/4.Lab_DOM_XSS_in_innerHTML_sink_using_source_location.search/4.Lab_DOM_XSS_in_innerHTML_sink_using_source_location.search.md)
+    * [DOM XSS in jQuery anchor `href` attribute sink using `location.search` source](write-up/PortSwigger/2.Cross-site_scripting/5.Lab_DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
+    * [DOM XSS in jQuery selector sink using a hashchange event](write-up/PortSwigger/2.Cross-site_scripting/6.Lab_DOM_XSS_in_jQuery_selector_sink_using_a_hashchange_event/DOM_XSS_in_jQuery_selector_sink_using_a_hashchange_event.md)
+    * [Reflected XSS into attribute with angle brackets HTML-encoded](write-up/PortSwigger/2.Cross-site_scripting/7.Lab_Reflected_XSS_into_attribute_with_angle_brackets_HTML-encoded/Reflected_XSS_into_attribute_with_angle_brackets_HTML-encoded.md)
+    * [Stored XSS into anchor `href` attribute with double quotes HTML-encoded](write-up/PortSwigger/2.Cross-site_scripting/8.Lab_Stored_XSS_into_anchor_href_attribute_with_double_quotes_HTML-encoded/Stored_XSS_into_anchor_href_attribute_with_double_quotes_HTML-encoded.md)
+    * [Reflected XSS into a JavaScript string with angle brackets HTML encoded](write-up/PortSwigger/2.Cross-site_scripting/9.Lab_Reflected_XSS_into_a_JavaScript_string_with_angle_brackets_HTML_encoded/Reflected_XSS_into_a_JavaScript_string_with_angle_brackets_HTML_encoded.md)
+    * [DOM XSS in `document.write` sink using source `location.search` inside a select element](write-up/PortSwigger/2.Cross-site_scripting/10.Lab_DOM_XSS_in_document.write_sink_using_source_location.search_inside_a_select-element/DOM_XSS_in_document.write_sink_using_source_location.search_inside_a_select-element.md)
+    * [DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded](write-up/PortSwigger/2.Cross-site_scripting/11.Lab_DOM_XSS_in_AngularJS_expression_with_angle_brackets_and_double_quotes_HTML-encoded/DOM_XSS_in_AngularJS_expression_with_angle_brackets_and_double_quotes_HTML-encoded.md)
+    * [Reflected DOM XSS](write-up/PortSwigger/2.Cross-site_scripting/12.Lab_Reflected_DOM_XSS/Reflected_DOM_XSS.md)
+
   * [CSRF](write-up/PortSwigger/3.CSRF/README.md)
     * [CSRF vulnerability with no defenses](write-up/PortSwigger/3.CSRF/1.CSRF%20vulnerability%20with%20no%20defenses/1.CSRF%20vulnerability%20with%20no%20defenses.md)
     * [CSRF where token validation depends on request method](write-up/PortSwigger/3.CSRF/2.CSRF%20where%20token%20validation%20depends%20on%20request%20method/2.CSRF%20where%20token%20validation%20depends%20on%20request%20method.md)
@@ -129,19 +143,16 @@
     * [Password reset broken logic](write-up/PortSwigger/5.Authentication%20vulnerabilities/10.Password%20reset%20broken%20logic/10.Password%20reset%20broken%20logic.md)
     * [Password reset poisoning via middleware](write-up/PortSwigger/5.Authentication%20vulnerabilities/11.Password%20reset%20poisoning%20via%20middleware/11.Password%20reset%20poisoning%20via%20middleware.md)
     * [Password brute-force via password change](write-up/PortSwigger/5.Authentication%20vulnerabilities/12.Password%20brute-force%20via%20password%20change/12.Password%20brute-force%20via%20password%20change.md)
-
   * [SSRF](write-up/PortSwigger/6.SSRF/README.md)
     * [Basic SSRF against the local server](write-up/PortSwigger/6.SSRF/1.Basic%20SSRF%20against%20the%20local%20server/1.Basic%20SSRF%20against%20the%20local%20server.md) 
     * [Basic SSRF against another back-end system](write-up/PortSwigger/6.SSRF/2.Basic%20SSRF%20against%20another%20back-end%20system/2.Basic%20SSRF%20against%20another%20back-end%20system.md) 
     * [SSRF with blacklist-based input filter](write-up/PortSwigger/6.SSRF/3.SSRF%20with%20blacklist-based%20input%20filter/3.SSRF%20with%20blacklist-based%20input%20filter.md)
     * [SSRF with filter bypass via open redirection vulnerability](write-up/PortSwigger/6.SSRF/4.SSRF%20with%20filter%20bypass%20via%20open%20redirection%20vulnerability/4.SSRF%20with%20filter%20bypass%20via%20open%20redirection%20vulnerability.md) 
     * [Blind SSRF with out-of-band detection](write-up/PortSwigger/6.SSRF/5.Blind%20SSRF%20with%20out-of-band%20detection/5.Blind%20SSRF%20with%20out-of-band%20detection.md) 
-
   * [CORS](write-up/PortSwigger/7.CORS/README.md)
     * [CORS vulnerability with basic origin reflection](write-up/PortSwigger/7.CORS/1.CORS%20vulnerability%20with%20basic%20origin%20reflection/1.CORS%20vulnerability%20with%20basic%20origin%20reflection.md)
     * [CORS vulnerability with trusted null origin](write-up/PortSwigger/7.CORS/2.CORS%20vulnerability%20with%20trusted%20null%20origin/2.CORS%20vulnerability%20with%20trusted%20null%20origin.md)
     * [CORS vulnerability with trusted insecure protocols](write-up/PortSwigger/7.CORS/3.CORS%20vulnerability%20with%20trusted%20insecure%20protocols/3.CORS%20vulnerability%20with%20trusted%20insecure%20protocols.md)
- 
   * [Clickjacking](write-up/PortSwigger/9.Clickjacking/README.md)
     * [Basic clickjacking with CSRF token protection](write-up/PortSwigger/9.Clickjacking/1.Basic%20clickjacking%20with%20CSRF%20token%20protection/1.Basic%20clickjacking%20with%20CSRF%20token%20protection.md)
     * [Clickjacking with form input data prefilled from a URL parameter](write-up/PortSwigger/9.Clickjacking/2.Clickjacking%20with%20form%20input%20data%20prefilled%20from%20a%20URL%20paramete/2.Clickjacking%20with%20form%20input%20data%20prefilled%20from%20a%20URL%20paramete.md)
